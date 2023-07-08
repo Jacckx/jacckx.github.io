@@ -1,12 +1,12 @@
 
 
 <!DOCTYPE html>
-<html lang="en" color-mode=light>
+<html lang="zh-CN" color-mode=light>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Archive - Jacckx: 2021/2</title>
+  <title>归档 - Jacckx: 2021/2</title>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="google" content="notranslate" />
@@ -28,7 +28,7 @@
 
   
     
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_s6x2xcokxrl.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
 
   
 
@@ -60,15 +60,22 @@
       isHome: false,
       fancybox: true,
       pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
       lazyload: {
         enable: true,
         only_post: 'false',
-        loading: '/images/theme/loading.gif'
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
       },
       donate: {
         enable: true,
-        alipay: '/images/theme/alipay.jpg',
-        wechat: '/images/theme/wechat.jpg'
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
       },
       galleries: {
         enable: true
@@ -85,11 +92,12 @@
       },
       preview: {
         background: {
-          default: '/images/theme/welcome-image.jpg',
+          default: '',
           api: ''
         },
         motto: {
-          default: 'Cease to struggle and you cease to live.',
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
           api: 'https://v2.jinrishici.com/one.json',
           data_contents: '["data","content"]'
         },
@@ -97,13 +105,13 @@
       qrcode: {
         enable: true,
         type: 'url',
-        image: 'https://pic.izhaoo.com/weapp-cod.jpg',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
       },
       toc: {
         enable: true
       },
       scrollbar: {
-        type: 'simple'
+        type: 'default'
       },
       notification: {
         enable: false,
@@ -111,6 +119,10 @@
         list: '',
         page_white_list: '',
         page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
       }
     }
   </script>
@@ -122,17 +134,22 @@
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="lock-screen">
-  <div class="loading"></div>
+  <div class="loading" id="loading"></div>
   
+    
 
 
   <nav class="navbar">
     <div class="left">
       
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
         <i class="iconfont iconqrcode j-navbar-qrcode"></i>
       
       
         <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
       
     </div>
     <div class="center">归档</div>
@@ -145,24 +162,25 @@
   </nav>
 
   
+  
 
 <nav class="menu">
-  <div class="menu-wrap">
+  <div class="menu-container">
     <div class="menu-close">
       <i class="iconfont iconbaseline-close-px"></i>
     </div>
     <ul class="menu-content"><li class="menu-item">
-        <a href="/ " class="underline "> Home</a>
+        <a href="/ " class="underline "> 首页</a>
       </li><li class="menu-item">
-        <a href="/galleries/ " class="underline "> Galleries</a>
+        <a href="/galleries/ " class="underline "> 摄影</a>
       </li><li class="menu-item">
-        <a href="/archives/ " class="underline "> Archives</a>
+        <a href="/archives/ " class="underline "> 归档</a>
       </li><li class="menu-item">
-        <a href="/tags/ " class="underline "> Tags</a>
+        <a href="/tags/ " class="underline "> 标签</a>
       </li><li class="menu-item">
-        <a href="/categories/ " class="underline "> Categories</a>
+        <a href="/categories/ " class="underline "> 分类</a>
       </li><li class="menu-item">
-        <a href="/about/ " class="underline "> About</a>
+        <a href="/about/ " class="underline "> 关于</a>
       </li></ul>
     
       <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
@@ -173,26 +191,34 @@
   <section class="archive">
     <div class="archive-container">
       <div class="archive-post">
-        <h3 class="archive-total">Archive: 3 Posts</h3>
+        <h3 class="archive-total">归档: 4 篇</h3>
         
         
           
-            <h3 class="archive-year">Year 2021</h3>
+            <h3 class="archive-year">2023 年</h3>
           
           <div class="archive-item">
-            <a class="archive-date" href="/2021/12/15/Android_Request_Location_Permissions/">December 14</a>
-            <a class="archive-title" href="/2021/12/15/Android_Request_Location_Permissions/">Android：Request Location Permissions</a>
+            <a class="archive-date" href="/2023/07/09/%E6%98%AF%E5%A4%9A%E5%B0%91/">七月 09</a>
+            <a class="archive-title" href="/2023/07/09/%E6%98%AF%E5%A4%9A%E5%B0%91/">是多少</a>
+          </div>
+        
+          
+            <h3 class="archive-year">2021 年</h3>
+          
+          <div class="archive-item">
+            <a class="archive-date" href="/2021/12/14/Android_Request_Location_Permissions/">十二月 14</a>
+            <a class="archive-title" href="/2021/12/14/Android_Request_Location_Permissions/">Android：Request Location Permissions</a>
           </div>
         
           
           <div class="archive-item">
-            <a class="archive-date" href="/2021/03/12/Windows_CLion_SDL2/">March 12</a>
+            <a class="archive-date" href="/2021/03/12/Windows_CLion_SDL2/">三月 12</a>
             <a class="archive-title" href="/2021/03/12/Windows_CLion_SDL2/">Windows 下 CLion 配置 SDL2 开发环境</a>
           </div>
         
           
           <div class="archive-item">
-            <a class="archive-date" href="/2021/02/28/Hexo_Custom_Domain/">February 28</a>
+            <a class="archive-date" href="/2021/02/28/Hexo_Custom_Domain/">二月 28</a>
             <a class="archive-title" href="/2021/02/28/Hexo_Custom_Domain/">Hexo博客搭建：个人域名绑定</a>
           </div>
         
@@ -200,44 +226,11 @@
     </div>
   </section>
 </main>
-
-
-<!-- <main id="main">
-  <section class="archive">
-    <div class="archive-container">
-      <div class="archive-post">
-        <h3 class="archive-total">归档: 3 篇</h3>
-        
-        
-          
-            <h3 class="archive-year">2021 年</h3>
-          
-          <div class="archive-item">
-            <a class="archive-date" href="/2021/12/15/Android_Request_Location_Permissions/">December 14</a>
-            <a class="archive-title" href="/2021/12/15/Android_Request_Location_Permissions/">Android：Request Location Permissions</a>
-          </div>
-        
-          
-          <div class="archive-item">
-            <a class="archive-date" href="/2021/03/12/Windows_CLion_SDL2/">March 12</a>
-            <a class="archive-title" href="/2021/03/12/Windows_CLion_SDL2/">Windows 下 CLion 配置 SDL2 开发环境</a>
-          </div>
-        
-          
-          <div class="archive-item">
-            <a class="archive-date" href="/2021/02/28/Hexo_Custom_Domain/">February 28</a>
-            <a class="archive-title" href="/2021/02/28/Hexo_Custom_Domain/">Hexo博客搭建：个人域名绑定</a>
-          </div>
-        
-      </div>
-    </div>
-  </section>
-</main> -->
   
 
 <footer class="footer">
   <div class="footer-social"><a 
-        href="tencent://message/?Menu=yes&uin=987886543 "
+        href="tencent://message/?Menu=yes&uin=894519210 "
         target="_blank"
         class="footer-social-item"
         onMouseOver="this.style.color= '#12B7F5'" 
@@ -251,14 +244,21 @@
         onMouseOut="this.style.color='#33333D'">
           <i class="iconfont  iconwechat-fill "></i>
       </a><a 
-        href="https://github.com/Jacckx "
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
         target="_blank"
         class="footer-social-item"
         onMouseOver="this.style.color= '#9f7be1'" 
         onMouseOut="this.style.color='#33333D'">
           <i class="iconfont  icongithub-fill "></i>
       </a><a 
-        href="mailto:jacckx@outlook.com "
+        href="mailto:izhaoo@163.com "
         target="_blank"
         class="footer-social-item"
         onMouseOver="this.style.color=#FF3B00" 
@@ -275,28 +275,28 @@
   </div>
   
   
+  
   <div class="fab fab-up">
     <i class="iconfont iconcaret-up"></i>
   </div>
   
-  
-    <div class="scrollbar j-scrollbar">
-  <div class="scrollbar-current j-scrollbar-current"></div>
-</div>
   
   
     
 <script src="/js/color-mode.js"></script>
 
   
+  
 </body>
 
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 
 
 
   
-<script src="/lib/lazyload/lazyload.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
 
 
 
@@ -310,7 +310,7 @@
 
 
   
-<script src="/lib/qrcode/qrcode.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 
 
 
@@ -319,43 +319,6 @@
 <script src="/js/script.js"></script>
 
 
-
-  <script>
-  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
-
-    AV.init({
-      appId: '1ryu5IAOAagjwbERK0CKFO6E-MdYXbMMI',
-      appKey: 'eXB4HFceMdeNiQPPi74nqfza',
-      serverURLs: 'https://1ryu5iao.api.lncldglobal.com',
-    });
-
-    const showCount = (Counter) => {
-      const asyncLimit = new AsyncLimit(2);
-      $(".leancloud").each(async (e) => {
-        const url = $(".leancloud").eq(e).attr('id').trim();
-        const query = new AV.Query("Counter");
-        query.equalTo("words", url);
-        let count = await asyncLimit.run(() => query.count());
-        $(".leancloud").eq(e).text(count ? count : '--');
-      });
-    }
-
-    const addCount = (Counter) => {
-      const url = $(".leancloud").length === 1 ? $(".leancloud").attr('id').trim() : 'http://jacckx.me';
-      var query = new Counter;
-      query.save({
-        words: url
-      });
-    }
-
-    $(function () {
-      const Counter = AV.Object.extend("Counter");
-      addCount(Counter);
-      showCount(Counter);
-    });
-
-  });
-</script>
 
 
 
@@ -374,7 +337,6 @@
       s.parentNode.insertBefore(bp, s);
     })();
   </script>
-
 
 
 
