@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PWN - Jacckx</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="PWN快速入门前言首先我觉得要学习PWN还是要有一定基...">
+  <meta name="author" content="Jacckx">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpg',
+        wechat: '/images/theme/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'Life Oriented Programming',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">PWN</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/post/xx.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">PWN</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>七月 09, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>10840</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h1 id="PWN"><a href="#PWN" class="headerlink" title="PWN"></a>PWN</h1><h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>首先我觉得要学习PWN还是要有一定基础的，因为PWN毕竟是和系统底层知识打交道，所以我觉得应该具备如下的一些技能，并且我推荐了一些不错的书籍。</p>
+<ul>
+<li>Linux系统基础知识<a target="_blank" rel="noopener" href="https://tiramisutes.github.io/images/PDF/vbird-linux-basic-4e.pdf">《鸟哥Linux私房菜》</a>、<a target="_blank" rel="noopener" href="https://www.linuxprobe.com/book">《Linux就该这么学》</a>、<a target="_blank" rel="noopener" href="https://www.linuxcool.com/">《Linux命令大全》</a></li>
+<li>Linux下C语言编程 <a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~guoyan/os12/LinuxC.pdf">《Linux C编程一站式学习》</a></li>
+<li>Python编程基础知识 <a target="_blank" rel="noopener" href="https://www.lanzoui.com/i508dab">《Python编程：从入门到实践》</a></li>
+<li>汇编语言<a target="_blank" rel="noopener" href="https://ihpm.cn/2318/.html">《汇编语言(第4版)》</a>、 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/VxerLee/p/15055485.html">王爽8086汇编学习笔记</a></li>
+<li>熟悉ELF文件格式 <a target="_blank" rel="noopener" href="https://www.xknote.com/books/nc6mb8.html#download">《Linux二进制分析 》</a></li>
+<li>熟悉GDB动态调试 <a target="_blank" rel="noopener" href="https://hack-big.tech/2019/01/30/gdb%E8%B0%83%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">gdb调试常用指令</a></li>
+</ul>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>PWN我觉得最开始的时候应该是没有这门学科和系统化的资料教程的，PWN本身属于高阶技能，个人感觉都是以前那些逆向大佬、编程大佬开始玩点高级的东西，然后就开始挖漏洞，结果就挖出了各种二进制漏洞，并且把二进制漏洞也完美的利用起来了，后面就归纳总结出一套体系供后人学习，在此真的膜拜那些前辈的共享精神。</p>
+<p>PWN为什么叫PWN呢？其实只是一种声音，pwn!你的电脑爆炸了，你的电脑被攻破了，因为用二进制漏洞挖掘与利用这词来形容pwn未免也太长了，所以就用了简洁的叫法。</p>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>这里介绍一些简单的PWN术语：</p>
+<ul>
+<li>Exploit(exp) : 用于攻击的脚本与方案</li>
+<li>Payload : 攻击载荷，是对目标进程劫持控制流的数据</li>
+<li>Shellcode : 调用攻击目标的shell的代码</li>
+</ul>
+<h3 id="比赛"><a href="#比赛" class="headerlink" title="比赛"></a>比赛</h3><p>详见:<a target="_blank" rel="noopener" href="http://www.ctftime.org/">ctftime.org</a></p>
+<ul>
+<li>Pwn2Own<ul>
+<li>世界最难的黑客挑战赛</li>
+<li>针对主流浏览器的远程攻击</li>
+<li>要求沙箱逃逸</li>
+</ul>
+</li>
+<li>CyberGrandChallenge<ul>
+<li>机器人的CTF攻防比赛</li>
+<li>自动化漏洞挖掘、漏洞利用、程序分析、程序补丁</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/1.1_ctf.html">https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/1.1_ctf.html</a></li>
+</ul>
+<h3 id="PWN环境搭建"><a href="#PWN环境搭建" class="headerlink" title="PWN环境搭建"></a>PWN环境搭建</h3><p>学习PWN知识我们先需要一个指定的环境来进行PWN，这里首选的操作系统为Ubuntu、Kali然后安装必要的PWN环境软件来进行搭建，当然如果你想省力气的话也可以用docker直接部署别人封装好的pwn环境。</p>
+<p><em>具体搭建步骤请看下一章</em></p>
+<h3 id="常见漏洞"><a href="#常见漏洞" class="headerlink" title="常见漏洞"></a>常见漏洞</h3><ul>
+<li>整数安全</li>
+<li>格式化字符串</li>
+<li>栈溢出与ROP</li>
+<li>堆利用</li>
+</ul>
+<h3 id="常见的保护"><a href="#常见的保护" class="headerlink" title="常见的保护"></a>常见的保护</h3><h4 id="RELRO"><a href="#RELRO" class="headerlink" title="RELRO"></a><strong>RELRO</strong></h4><p>Relocation Read-Onl（RELRO）此项技术主要针对GOT改写的攻击方式，它分成两种，Partial RELRO和FULL RELRO<br>Partial （部分）RELRO容易受到攻击，例如攻击者可以atoi.got为system.plt进而输入/bin/sh\x00获得shell，完全RELRO使整个GOT只读，从而无法被覆盖，但这样会大大增加程序的启动时间，因为程序在启动之前需要解析所有的符号。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -o hello test.c //默认情况下，是Partial RELRO<br>gcc -z norelro -o hello test.c // 关闭，即No RELRO<br>gcc -z lazy -o hello test.c // 部分开启，即Partial RELRO<br>gcc -z now -o hello test.c // 全部开启，即Full RELRO<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="Canary"><a href="#Canary" class="headerlink" title="Canary"></a><strong>Canary</strong></h4><p>栈溢出保护是一种缓冲区溢出攻击缓解手段，当函数存在缓冲区溢出攻击漏洞是，攻击者可以覆盖栈上的返回地址来让shellcode能够得到执行，当启用栈保护后，函数开始执行的时候先会往栈里插入类似cookie信息，当函数真正返回的时候会验证cookie信息是否合法，如果不合法就停止程序运行，攻击者在覆盖返回地址的时候往往会将cookie信息给覆盖掉，导致栈保护检车失败而阻止shellcode的执行，在linux中我们将cookie信息称为canary。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -fno-stack-protector -o hello test.c   //禁用栈保护<br>gcc -fstack-protector -o hello test.c    //启用堆栈保护，不过只为局部变量中含有 char 数组的函数插入保护代码<br>gcc -fstack-protector-all -o hello test.c  //启用堆栈保护，为所有函数插入保护代码<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="NX-DEP"><a href="#NX-DEP" class="headerlink" title="NX(DEP)"></a><strong>NX(DEP)</strong></h4><p>NX enabled如果这个保护开启就是意味着栈中数据没有执行权限，如此一来，当攻击者在堆栈上部署自己的shellcode并触发时，就会直接造成程序的崩溃，但是可以利用rop这种方法绕过。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -o  hello test.c // 默认情况下，开启NX保护<br>gcc -z execstack -o  hello test.c // 禁用NX保护<br>gcc -z noexecstack -o  hello test.c // 开启NX保护<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="ASLR"><a href="#ASLR" class="headerlink" title="ASLR"></a><strong>ASLR</strong></h4><p>ASLR 是 Linux操作系统的功能选项，作用于程序（ELF）装入内存运行时。是一种针对<strong>缓冲区溢出</strong>的<strong>安全保护技术</strong>，通过对堆、栈、共享库映射等线性区布局的随机化，防止攻击者直接定位攻击代码位置，到达阻止溢出攻击的一种技术。</p>
+<p>在传统的操作系统里，用户程序的地址空间布局是固定的，自低向高依次为代码区， BSS区，堆栈区，攻击者通过分析能轻易得出各区域的基地址，在此情况下，只要攻击者的注入代码被执行，攻击者就能随意跳转到想到达的区域，终取得计算机的控制权，试想如果一个程序在执行时，系统分配给此进程三个区域的基地址是随机产生的，每次该程序执行都不一样，那么攻击者注入的代码即使被执行，也终会因为无法找到合法的返回地址而产生错误，终进程停止，攻击者无法入侵，这就是地址空间布局随机化的基本思想。</p>
+<p>查看并修改当前系统的ASLR设定：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo cat /proc/sys/kernel/randomize_va_space<br><br><span class="hljs-meta">#</span><span class="bash"> ASLR 有三个安全等级：</span><br><span class="hljs-meta">	#</span><span class="bash"> 0：ASLR 关闭</span><br><span class="hljs-meta">	#</span><span class="bash"> 1：随机化栈基地址（stack）、共享库（.so\libraries）、mmap 基地址</span><br><span class="hljs-meta">	#</span><span class="bash"> 2：在1基础上，增加随机化堆基地址（chunk）</span><br>	<br>echo 0 | sudo tee /proc/sys/kernel/randomize_va_space<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="PIE"><a href="#PIE" class="headerlink" title="PIE"></a><strong>PIE</strong></h4><p>PIE 是 gcc 编译器的功能选项，作用于程序（ELF）编译过程中。是一个针对代码段（ .text ）、数据段（ .data ）、未初始化全局变量段（ .bss ）等固定地址的一个防护技术。程序运行时各个段加载的虚拟地址也是在装载时才确定，这就意味着，在PIE开启的情况下，攻击者将对程序的内存布局一无所知。这也防止了通过 ROPgadget 等一些工具来帮助解题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -o hello test.c  // 默认情况下，不开启PIE<br>gcc -no-pie -o hello test.c<br>gcc -fpie -pie -o hello test.c  // 开启PIE，此时强度为1<br>gcc -fPIE -pie -o hello test.c  // 开启PIE，此时为最高强度2<br></code></pre></td></tr></table></figure>
+
+<p>内存地址随机化机制，有三种情况</p>
+<ul>
+<li>0 - 表示关闭进程地址空间随机化</li>
+<li>1 - 表示将mmap的机制，stack和vdso页面随机化</li>
+<li>2 - 表示在1的基础上增加堆（heap）的随机化</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>作用位置</th>
+<th>归属</th>
+<th>作用时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ASLR</td>
+<td><strong>1</strong>：栈基地址（stack）、共享库（.so\libraries）、mmap 基地址<br><strong>2</strong>：在1基础上，增加随机化堆基地址（chunk）</td>
+<td>系统功能</td>
+<td>作用于程序（ELF）装入内存运行时</td>
+</tr>
+<tr>
+<td>PIE</td>
+<td>代码段（ .text ）、初始化数据段（ .data ）、未初始化数据段（ .bss ）</td>
+<td>编译器功能</td>
+<td>作用于程序（ELF）编译过程中</td>
+</tr>
+</tbody></table>
+<p><img   class="lazyload" data-original="/2023/07/09/PWN/20180412111328479.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<h3 id="PWN技巧"><a href="#PWN技巧" class="headerlink" title="PWN技巧"></a>PWN技巧</h3><ul>
+<li>One-gadget</li>
+<li>通用dadget及Return-to-csu</li>
+<li>劫持hook函数</li>
+<li>利用DynELF泄露函数地址</li>
+<li>SSP Leak</li>
+<li>利用environ泄露栈地址</li>
+<li>利用_IO_FILE结构</li>
+<li>利用vsyscall</li>
+</ul>
+<h3 id="神奇的小知识"><a href="#神奇的小知识" class="headerlink" title="神奇的小知识"></a>神奇的小知识</h3><p><strong>如何检查文件的保护情况</strong></p>
+<p>checksec 文件名（要以root权限执行）</p>
+<img   class="lazyload" data-original="/2023/07/09/PWN/2ddbd4d4b90845efb0dfd7865fcd64b0.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  style="zoom:67%;"><span class="image-caption">image.png</span>
+
+
+
+<p><strong>编译时如何关闭这些保护呢</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">gcc -o hello hello.c -m32 -fno-stack-protector -z execstack -mpreferred-stack-boundary=2 -no-pie -g<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>查看程序使用了哪些函数</strong></p>
+<p>objdump命令是用查看目标文件或者可执行的目标文件的构成的gcc工具</p>
+<p>-j hello 仅仅显示指定名称为hello的section的信息</p>
+<p>-t 显示文件的符号表入口</p>
+<p>objdump -t -j .text hello</p>
+<p>查看hello程序的.text段有哪些函数</p>
+<img   class="lazyload" data-original="/2023/07/09/PWN/6fe24ff802434fb89748630602c7cbe4.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  style="zoom: 67%;"><span class="image-caption">image.png</span>
+
+
+
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="一、Ubuntu-环境搭建"><a href="#一、Ubuntu-环境搭建" class="headerlink" title="一、Ubuntu 环境搭建"></a>一、Ubuntu 环境搭建</h3><h4 id="虚拟机安装"><a href="#虚拟机安装" class="headerlink" title="虚拟机安装"></a>虚拟机安装</h4><p><em>当初尝试搭建ubuntu16.04的环境，但是搭建了大半天pwntools还是不行。所以这次尝试ubuntu20.04，选择20.04是因为现在很多打比赛的题目大部分都是libc2.27以上的了。</em></p>
+<p>官方镜像下载：<a target="_blank" rel="noopener" href="https://releases.ubuntu.com/focal/">https://releases.ubuntu.com/focal/</a></p>
+<p>下载好镜像之后就可以在VMware上安装了。</p>
+<p>安装完后打开终端更新软件列表：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get update<br>sudo apt-get upgrade -y<br></code></pre></td></tr></table></figure>
+
+<p>虚拟机挂起恢复后，无法联网</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo service network-manager restart<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>系统自动登入root账户</strong></p>
+<p>Ubuntu20.04安装完成之后，默认是没有root账户登录权限的，这样在操作系统时有诸多不便，比如新建一个文件都提示权限不够！不过可以通过创建的普通用户获取管理员权限，然后修改配置和root账户的密码，最后实现系统自动登录root账户，具体操作步骤如下：</p>
+<ol>
+<li><p><strong>设置密码</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo passwd root<br></code></pre></td></tr></table></figure>
+
+<p>然后按照提示，先输入当前账户的密码，然后是root账户密码，最后再确认密码。</p>
+</li>
+<li><p><strong>修改系统配置文件</strong> (先安装vim编辑器)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf<br></code></pre></td></tr></table></figure>
+
+<p>进入50-ubuntu.conf的文件中，并在文件中最后添加两行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[Seat:*]<br>user-session=ubuntu<br>greeter-show-manual-login=true		//手工输入登录系统的用户名和密码<br>all-guest=false					   //不允许guest登入<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改autologin和password文件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/pam.d/gdm-autologin<br></code></pre></td></tr></table></figure>
+
+<p>注释掉第三行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">%PAM-1.0</span><br>auth    requisite       pam_nologin.so<br><span class="hljs-meta">#</span><span class="bash">auth   required        pam_succeed_if.so user != root quiet_success	//注释掉此行</span><br>auth    optional        pam_gdm.so<br>auth    optional        pam_gnome_keyring.so<br>auth    required        pam_permit.so<br></code></pre></td></tr></table></figure>
+
+<p>保存退出后执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/pam.d/gdm-password<br></code></pre></td></tr></table></figure>
+
+<p>注释掉第三行然后保存退出</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">%PAM-1.0</span><br>auth    requisite       pam_nologin.so<br><span class="hljs-meta">#</span><span class="bash">auth   required        pam_succeed_if.so user != root quiet_success		//注释掉此行</span><br>@include common-auth<br>auth    optional        pam_gnome_keyring.so<br>@include common-account<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改profile文件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /root/.profile<br></code></pre></td></tr></table></figure>
+
+<p>在文件中修改配置如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> ~/.profile: executed by Bourne-compatible login shells.</span><br><br>if [ &quot;$BASH&quot; ]; then<br>  if [ -f ~/.bashrc ]; then<br>    . ~/.bashrc<br>  fi<br>fi<br>tty -s &amp;&amp; mesg n || true		//添加此行<br>mesg n 2&gt; /dev/null || true<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改custom.conf文件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/gdm3/custom.conf<br></code></pre></td></tr></table></figure>
+
+<p>修改如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> Enabling automatic login</span><br>AutomaticLoginEnable=true #是否自动登录系统，设为ture时每次会自动进入系统，而不用输密码<br>AutomaticLogin=root       #自动登录系统时的默认用户名<br><br><span class="hljs-meta">#</span><span class="bash"> Enabling timed login</span><br>TimedLoginEnable=true     #是否开启超时自动登录<br>TimedLogin=root           #超时自动登录的用户<br>TimedLoginDelay=10        #超时时间<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重启系统就会自动登录到root账户了</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo reboot<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h4 id="安装-vim"><a href="#安装-vim" class="headerlink" title="安装 vim"></a>安装 vim</h4><p>vim 是vi的升级版本，它不仅兼容vi的所有指令，而且还有一些新的特性在里面。 vi使用于文本编辑，但是vim更适用于coding。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install vim<br>vim -v<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h4><p>后续会经常在github上拽工具，所以git必装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install git<br>git --version<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-gcc"><a href="#安装-gcc" class="headerlink" title="安装 gcc"></a>安装 gcc</h4><p>GCC（GNU Compiler Collection）是由GNU开发的编程语言译器，必装啦，这个不用说了，自己想要编写一些demo的时候需要gcc进行编译，后续ARM交叉编译环境也需要gcc支持</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install gcc<br>gcc -v<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-python3-pip"><a href="#安装-python3-pip" class="headerlink" title="安装 python3-pip"></a>安装 python3-pip</h4><p>pip 是一个现代的，通用的 Python 包管理工具。提供了对 Python 包的查找、下载、安装、卸载的功能。</p>
+<p>因为python2已经不再维护了，所以后续很多工具所需的依赖python2会出错，python3不会有什么问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install python3-pip<br>pip -V<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="创建-PWN目录"><a href="#创建-PWN目录" class="headerlink" title="创建 PWN目录"></a>创建 PWN目录</h4><p>建议在主目录下创建一个tools目录，这样我们所有git下来的工具就有统一存放的位置，也方便后续查找</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ~<br>mkdir tools<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-pwntools"><a href="#安装-pwntools" class="headerlink" title="安装 pwntools"></a>安装 pwntools</h4><p>Pwntools是一个CTF框架和开发库。它是用Python编写的，由rapid设计，旨在让使用者简单快速的编写exploit。</p>
+<p>Pwntools有两种安装方法，一种是git项目后安装，另一种是pip直接安装。这里我们把pwntools git下来，但是用pip安装，因为后续的工具需要pwntools项目包里的脚本，pip安装不会出错。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd tools<br>git clone https://github.com/Gallopsled/pwntools.git<br>sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential<br>python3 -m pip install --upgrade pip<br>python3 -m pip install --upgrade pwntools<br></code></pre></td></tr></table></figure>
+
+<p>检验以下，如果导包后没报错安装成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">python3<br><span class="hljs-meta">&gt;</span><span class="bash">&gt;&gt; from pwn import *</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-pwndbg"><a href="#安装-pwndbg" class="headerlink" title="安装 pwndbg"></a>安装 pwndbg</h4><p>pwndbg是gdb的插件，帮助我们在做题时进行调试。当然你喜欢gef，或者peda也随意。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd tools<br>git clone https://github.com/pwndbg/pwndbg.git<br>cd pwndbg<br>./setup.sh<br></code></pre></td></tr></table></figure>
+
+<p>安装后在命令行输入gdb回车，如果左下角出现pwndbg代表安装成功。</p>
+<h4 id="安装-checksec"><a href="#安装-checksec" class="headerlink" title="安装 checksec"></a>安装 checksec</h4><p>一个辅助工具，可以用来检测二进制文件格式和安全防护情况。安装完pwntools后，checksec也会自动被安装上。可以在目录<code>/usr/bin</code>下找到checksec的脚本。</p>
+<p>除了pwntools自带的，我们也可以选择在线安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install checksec<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-32位的库"><a href="#安装-32位的库" class="headerlink" title="安装 32位的库"></a>安装 32位的库</h4><p>gcc-multilib可用于交叉编译（cross compiling），即编译程序以在不同的处理器架构上运行。例如可以在x86_64位处理器上编译出x86_32位程序，运行在32位处理器上，或者在x86平台上编译出可以在ARM处理器上运行的程序。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install gcc-multilib<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="其他网站"><a href="#其他网站" class="headerlink" title="其他网站"></a>其他网站</h4><p><a target="_blank" rel="noopener" href="https://hollk.blog.csdn.net/article/details/118188924">https://hollk.blog.csdn.net/article/details/118188924</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_54218833/article/details/125241618">https://blog.csdn.net/qq_54218833/article/details/125241618</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Y_peak/article/details/120712904">https://blog.csdn.net/Y_peak/article/details/120712904</a></p>
+<h3 id="二、Kali-环境搭建"><a href="#二、Kali-环境搭建" class="headerlink" title="二、Kali 环境搭建"></a>二、Kali 环境搭建</h3><h4 id="虚拟机安装-1"><a href="#虚拟机安装-1" class="headerlink" title="虚拟机安装"></a>虚拟机安装</h4><p><em>Ubuntu的界面和命令行不够优雅，所以这次尝试Kali 2021.1，选择这个版本是因为系统相对稳定流程，并且zsh的颜色配置相对完善。</em></p>
+<p>官方镜像下载：<a target="_blank" rel="noopener" href="https://old.kali.org/kali-images/">https://old.kali.org/kali-images/</a></p>
+<p>下载好镜像之后就可以在VMware上安装了。</p>
+<p>安装完后打开终端更新软件列表：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt-get update<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>系统自动登入账户</strong></p>
+<p>安装完成之后，默认是没有root账户登录权限的，这样在操作系统时有诸多不便，比如新建一个文件都提示权限不够！不过可以通过创建的普通用户获取管理员权限，然后修改配置和root账户的密码，最后实现系统自动登录用户账户，具体操作步骤如下：</p>
+<ol>
+<li><p><strong>设置密码</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo passwd root<br></code></pre></td></tr></table></figure>
+
+<p>然后按照提示，先输入当前账户的密码，然后是root账户密码，最后再确认密码。</p>
+</li>
+<li><p><strong>修改系统配置文件</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/lightdm/lightdm.conf<br></code></pre></td></tr></table></figure>
+
+<p>进入lightdm.conf的文件中，把这两行的注释删除然后修改参数保存：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[Seat:*]<br>autologin-user=jacckx<br>autologin-user-timeout=0<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改autologin文件，实现自动登入账户</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim /etc/pam.d/lightdm-autologin<br></code></pre></td></tr></table></figure>
+
+<p>注释掉这一行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">auth   required        pam_succeed_if.so user != root quiet_success	//注释掉此行</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重启系统就会自动登录到账户，不需要输入密码了</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo reboot<br></code></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="创建-PWN目录-1"><a href="#创建-PWN目录-1" class="headerlink" title="创建 PWN目录"></a>创建 PWN目录</h4><p>建议在主目录下创建一个tools目录，这样我们所有git下来的工具就有统一存放的位置，也方便后续查找</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd ~<br>mkdir tools<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-pwntools-1"><a href="#安装-pwntools-1" class="headerlink" title="安装 pwntools"></a>安装 pwntools</h4><p>Pwntools是一个CTF框架和开发库。它是用Python编写的，由rapid设计，旨在让使用者简单快速的编写exploit。</p>
+<p>Pwntools有两种安装方法，一种是git项目后安装，另一种是pip直接安装。这里我们把pwntools git下来，但是用pip安装，因为后续的工具需要pwntools项目包里的脚本，pip安装不会出错。</p>
+<p>pip 是一个现代的，通用的 Python 包管理工具。提供了对 Python 包的查找、下载、安装、卸载的功能。</p>
+<p>因为python2已经不再维护了，所以后续很多工具所需的依赖python2会出错，python3不会有什么问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd tools<br>git clone https://github.com/Gallopsled/pwntools.git<br>sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential<br>python3 -m pip install --upgrade pip<br>python3 -m pip install --upgrade pwntools<br><br></code></pre></td></tr></table></figure>
+
+<p>检验以下，如果导包后没报错安装成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">python3<br><span class="hljs-meta">&gt;</span><span class="bash">&gt;&gt; from pwn import *</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-gdb"><a href="#安装-gdb" class="headerlink" title="安装 gdb"></a>安装 gdb</h4><p>kali系统里没有安装gdb</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install gdb<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-pwndbg-1"><a href="#安装-pwndbg-1" class="headerlink" title="安装 pwndbg"></a>安装 pwndbg</h4><p>pwndbg是gdb的插件，帮助我们在做题时进行调试。当然你喜欢gef，或者peda也随意。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd tools<br>git clone https://github.com/pwndbg/pwndbg.git<br>cd pwndbg<br>./setup.sh<br></code></pre></td></tr></table></figure>
+
+<p>安装后在命令行输入gdb回车，如果左下角出现红色(pwndbg）代表安装成功。</p>
+<h4 id="安装-checksec-1"><a href="#安装-checksec-1" class="headerlink" title="安装 checksec"></a>安装 checksec</h4><p>一个辅助工具，可以用来检测二进制文件格式和安全防护情况。安装完pwntools后，checksec也会自动被安装上，可以在目录<code>~/.local/bin</code>下找到checksec的脚本。最后就是把这个路径加到环境变量里，首先打开：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo vim ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p>在最后一行添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">export PATH=&quot;$HOME/.local/bin:$PATH&quot;<br></code></pre></td></tr></table></figure>
+
+<p>保存退出后运行这个命令来更新：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">source ~/.zshrc<br></code></pre></td></tr></table></figure>
+
+<p>除了pwntools自带的，我们也可以选择在线安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install checksec<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-32位的库-1"><a href="#安装-32位的库-1" class="headerlink" title="安装 32位的库"></a>安装 32位的库</h4><p>gcc-multilib可用于交叉编译（cross compiling），即编译程序以在不同的处理器架构上运行。例如可以在x86_64位处理器上编译出x86_32位程序，运行在32位处理器上，或者在x86平台上编译出可以在ARM处理器上运行的程序。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install gcc-multilib<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、其他选装工具"><a href="#三、其他选装工具" class="headerlink" title="三、其他选装工具"></a>三、其他选装工具</h3><h4 id="安装-sublime-text"><a href="#安装-sublime-text" class="headerlink" title="安装 sublime-text"></a>安装 sublime-text</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> Install the GPG key:</span><br>wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg &gt; /dev/null<br><br><span class="hljs-meta">#</span><span class="bash"> Select the channel to use:</span><br>echo &quot;deb https://download.sublimetext.com/ apt/stable/&quot; | sudo tee /etc/apt/sources.list.d/sublime-text.list<br><br><span class="hljs-meta">#</span><span class="bash"> Update apt sources and install Sublime Text:</span><br>sudo apt-get update<br>sudo apt-get install sublime-text<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-aptitude"><a href="#安装-aptitude" class="headerlink" title="安装 aptitude"></a>安装 aptitude</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install aptitude<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-gdebi"><a href="#安装-gdebi" class="headerlink" title="安装 gdebi"></a>安装 gdebi</h4><p>gdebi是一个用于安装你自己手动下载的包的GUI程序。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo apt install gdebi <br></code></pre></td></tr></table></figure>
+
+<p>用gdebi安装deb包，它将会自动安装deb包所需要的依赖包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo gdebi nautilus_nutstore_amd64.deb<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="逆向工程基础"><a href="#逆向工程基础" class="headerlink" title="逆向工程基础"></a>逆向工程基础</h2><h3 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h3><p>在操作系统中，为了防止直接分配和使用物理内存造成的诸如内存不足、安全性不足、内存碎片化等问题，采用了虚拟内存空间技术。利用这一手段，只有在进程真正需要访问内存资源时才产生缺页中断，建立虚拟内存地址和物理地址的映射，从而避免了内存浪费。虚拟内存的主要作用是：</p>
+<ol>
+<li>为每个进程提供了一致的地址空间。</li>
+<li>保护每个进程的空间不被其他进程破坏。</li>
+<li>程序运行时只在内存中保存需要的数据，并根据需要在磁盘和内存之间来回传送数据（缺页中断）。</li>
+</ol>
+<p><strong>x86-32位虚拟地址空间</strong></p>
+<p>在Linux中，系统为每个进程维持了一个单独的虚拟地址空间，包括了 .text、.data、.bss、stack、heap，共享库等内容。</p>
+<p><img   class="lazyload" data-original="/2023/07/09/PWN/image-20221130040818432.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">image-20221130040818432</span></p>
+<p>在这个单独的虚拟地址空间中，空间被划分为<code>内核空间</code>和<code>用户空间</code>。访问内核空间需要程序有ring0的权限，<strong>尽管存在特权分离，但它们都共享相同的虚拟地址空间</strong>。</p>
+<p>在Linux x86-32位中，4GB地址空间被划分成：</p>
+<ul>
+<li><p>3GB的用户空间，地址从0x08048000 ~ 0xBFFFFFFF</p>
+</li>
+<li><p>1GB的内核空间，地址从0xC0000000 ~ 0xFFFFFFFF</p>
+</li>
+</ul>
+<blockquote>
+<p>而Windows对空间的划分不同于Linux，4G 地址空间中低2G，0x00000000 ~ 0x7FFFFFFF 是用户地址空间。高2G，0x80000000 ~ 0xFFFFFFFF 是系统地址空间。</p>
+</blockquote>
+<h3 id="glibc"><a href="#glibc" class="headerlink" title="glibc"></a>glibc</h3><p>glibc 即 GNU C Library，是为 GNU 操作系统开发的一个 C 标准库。glibc 主要由两部分组成，一部分是头文件，位于 <code>/usr/include</code>；另一部分是库的二进制文件。二进制文件部分主要是 C 语言标准库，有动态和静态两个版本，动态版本位于 <code>/lib/libc.so.6</code>，静态版本位于 <code>/usr/lib/libc.a</code></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>Jacckx</li>
+    <li><strong>本文链接：</strong><a href="http://jacckx.me/2023/07/09/PWN/index.html" title="http:&#x2F;&#x2F;jacckx.me&#x2F;2023&#x2F;07&#x2F;09&#x2F;PWN&#x2F;index.html">http:&#x2F;&#x2F;jacckx.me&#x2F;2023&#x2F;07&#x2F;09&#x2F;PWN&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/07/09/Spring/">Spring<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PWN"><span class="toc-text">PWN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AF%E8%AF%AD"><span class="toc-text">术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%B5%9B"><span class="toc-text">比赛</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PWN%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">PWN环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E"><span class="toc-text">常见漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BF%9D%E6%8A%A4"><span class="toc-text">常见的保护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PWN%E6%8A%80%E5%B7%A7"><span class="toc-text">PWN技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A5%9E%E5%A5%87%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86"><span class="toc-text">神奇的小知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81Ubuntu-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">一、Ubuntu 环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Kali-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">二、Kali 环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E4%BB%96%E9%80%89%E8%A3%85%E5%B7%A5%E5%85%B7"><span class="toc-text">三、其他选装工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="toc-text">逆向工程基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-text">内存管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#glibc"><span class="toc-text">glibc</span></a></li></ol></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=987886543 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/jacckx.c/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/Jacckx "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:jacckx@outlook.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,645 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Spring - Jacckx</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="SpringSpring 入门前言现阶段我们属于刚刚学...">
+  <meta name="author" content="Jacckx">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/theme/alipay.jpg',
+        wechat: '/images/theme/wechat.jpg'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'Life Oriented Programming',
+          typing: true,
+          api: '',
+          data_contents: ''
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'simple'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">Spring</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/Spring/background.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">Spring</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>七月 09, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>15899</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="Spring-入门"><a href="#Spring-入门" class="headerlink" title="Spring 入门"></a>Spring 入门</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>现阶段我们属于刚刚学完 JavaSE ，或者 JavaWeb 的基础知识，刚学会使用 Servlet 来开发简单的小 Web 应用。学完了基础，自然要开始接触框架了。作为入门的框架，首先推荐先学习 Spring ，原因大致如下：</p>
+<ul>
+<li>几乎当下所有的企业级 JavaEE 开发<strong>都离不开</strong> Spring框架；</li>
+<li>Spring框架<strong>不局限于某一个部分</strong> / 模块的技术，对于表现层、业务层、持久层等都有提供解决方案；</li>
+<li>Spring框架最强大的地方在于<strong>与其他技术的整合</strong>；</li>
+<li>SpringFramework 是后续 SpringBoot 、乃至微服务 SpringCloud 的最最基础，<strong>早早地打下基础，可以更好地为以后更高阶的技术学习铺路</strong>；</li>
+<li>SpringFramework 被很多面试官拿来作为<strong>经典面试考题</strong>，且<strong>难度有逐年上升的趋势</strong>。</li>
+</ul>
+<p>参考书籍推荐：<a target="_blank" rel="noopener" href="https://juejin.cn/book/6857911863016390663">从 0 开始深入学习 Spring</a></p>
+<h3 id="Spring-概述"><a href="#Spring-概述" class="headerlink" title="Spring 概述"></a>Spring 概述</h3><blockquote>
+<p>Spring框架是什么？</p>
+</blockquote>
+<p>Spring 是一个开源的、<strong>松耦合的</strong>、<strong>分层的</strong>、<strong>可配置</strong>的一站式企业级Java开发框架。它的核心功能是IOC和AOP，它使开发人员更容易的构建出企业级Java应用，并且它可以根据应用开发的组件需要，<strong>整合对应的技术</strong>。</p>
+<ul>
+<li><strong>松耦合</strong> ：基于IOC和AOP的特性，去除了Java类之间的依赖关系。</li>
+<li><strong>分层</strong>：提供了表现层、业务层、持久层等领域的解决方案。</li>
+<li><strong>可配置</strong>：</li>
+<li>企业级：Spring框架不仅能构建JaveEE Web项目，也可以用在普通的JavaSE和GUI项目上。</li>
+<li><strong>第三方整合</strong>：Spring框架可以很方便的整合进其他的第三方技术，如持久层框架 MyBatis / Hibernate 等。</li>
+</ul>
+<blockquote>
+<p>为什么使用Spring框架？</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非侵入式设计</td>
+<td>基于Spring开发的应用中的对象无需继承框架提供的任何类，这样我们再更换框架时，之前写过的代码几乎可以继续使用。</td>
+</tr>
+<tr>
+<td>方便解耦，简化开发</td>
+<td>通过Spring提供的IoC容器，我们可以将对象之间的依赖关系交给Spring框架管理，避免硬编码所造成的过渡耦合。</td>
+</tr>
+<tr>
+<td>AOP编程的支持</td>
+<td>面向切面的编程能帮助开发人员实现无耦合的日志记录，性能统计，安全控制。</td>
+</tr>
+<tr>
+<td>声明式事务的支持</td>
+<td>在Spring中，开发人员可以从单调烦闷的事务管理代码中解脱出来，通过声明式方式灵活地进行事务的管理，提高开发的效率。</td>
+</tr>
+<tr>
+<td>方便集成其他框架</td>
+<td>在 IOC 和 AOP 的基础上可以整合其他优秀的框架，如持久层框架 MyBatis / Hibernate 等。（实际上 Spring 自身也提供了表现层的 SpringMVC 和持久层的 Spring JDBC）</td>
+</tr>
+</tbody></table>
+<h3 id="Spring-发展历史"><a href="#Spring-发展历史" class="headerlink" title="Spring 发展历史"></a>Spring 发展历史</h3><p>聊到 SpringFramework 的发展历史，这里面的故事蛮有意思的，给小伙伴们讲讲那当年的故事。小伙伴大概知道有这么回事就行，没必要记住具体的内容，咱讲这部分也就图一乐。</p>
+<img   class="lazyload" data-original="/2023/07/09/Spring/image-20221223003149292.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  style="zoom:67%;"><span class="image-caption">image-20221223003149292</span>
+
+
+
+<p><strong>EJB思想的提出</strong></p>
+<p>这个事得说回上个世纪的 1997 年，IBM 公司咱都知道，老大哥了是吧。人家那里头的大佬多啊，面对当时的 J2EE 开发，为了整一套标准的 Java 扩展开发，IBM 的大佬们费心研究，提出了一个技术思想：<strong>EJB</strong> ( Enterprise JavaBean ) ，并且还扬言说，做企业级开发就得按照我说的这么来！按照我这样做是标准的、规范的！</p>
+<p><strong>EJB的诞生与程序猿的痛苦</strong></p>
+<p>提出 EJB 来之后，这个思想被 Sun （那个时候 Java 还是 Sun 的）看到了，呦呵你这个东西好啊，那我是 Java 他爹啊，你这思想我能给你整合进来，壮大咱 Java 的规模和势力啊。于是在 1998 年，Java 中就有了 EJB 的标准规范，它跟当时 J2EE 的其它技术一起联合（包括 JMS 消息、JNDI 命名目录接口、JSP 服务端页面技术等等），称之为 J2EE 开发的核心技术。随后，IBM 召集的这群大佬就把 EJB 的实现给造出来了，而且在 2002 年 EJB 出了 2.0 版，那个时候基本上 EJB 已经可以横行 J2EE开发了，大家都拿 EJB 当做企业级开发的标准。</p>
+<p>不过 EJB 虽然很牛，但学起来实在是太麻烦了，而且它本身是个重量级的技术，与应用业务的代码侵入度实在是有点高，所以搞得大家用 EJB 的时候都好痛苦。但话又说回来，人家 IBM 那么多大佬提出来、实现好的技术，你一句难学、不好用就行了？那是不是你本身太笨了才搞得你学不会呢？</p>
+<p><img   class="lazyload" data-original="/2023/07/09/Spring/200107f1d6a345b284a9847814d5c97atplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><span class="image-caption">img</span></p>
+<p>也由于这个原因吧，当时的 J2EE 开发者们都是一边嘟囔着难用难学，但又不好说出来，只能含泪使用。</p>
+<p><strong>Spring框架的诞生</strong></p>
+<p>既然大家都用，难免会有一些铁头娃，人家就是觉得，你不好用还赖得着我脑子笨？你不好用大家还都就变成猪头了？ 于是，一个伟大的神仙级人物要登场了。</p>
+<p>时间到了 2002 年，有一个人叫 <strong>Rod Johnson</strong> ，他写了一本书：<strong>《Expert One-on-One J2EE design and development》</strong> ，里面对当时现有的 J2EE 应用的架构和框架存在的臃肿、低效等问题提出了质疑，并且积极寻找和探索解决方案。大概的意思就是说，“我觉得 J2EE 开发挺好的，就是特喵的有些迷惑的设计实在是，徒增成本，方向错了”。</p>
+<p>过了 2 年，2004 年 SpringFramework 1.0.0 横空出世，随后 <strong>Rod Johnson</strong> 又写了一本书，当时在 J2EE 开发界引起了巨大轰动，它就是著名的 <strong>《Expert one-on-one J2EE Development without EJB》</strong>，这本书中直接告诉开发者完全可以不使用 EJB 开发 J2EE 应用，而是可以换用一种更轻量级、更简单的框架来代替，那就是 <strong>Spring框架</strong> 。</p>
+<p>后来开发界的程序猿们用了 SpringFramework 感觉确实比 EJB 好，而且 SpringFramework 提供的一些特性也比 EJB 好，于是大家就慢慢转投 SpringFramework 了。</p>
+<p><strong>Spring框架的迭代</strong></p>
+<p>下面咱列出一个 SpringFramework 的重要版本更新时间及重大特性：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>对应jdk版本</th>
+<th>重要特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SpringFramework 1.x</td>
+<td>jdk 1.3</td>
+<td>基于 xml 的配置</td>
+</tr>
+<tr>
+<td>SpringFramework 2.x</td>
+<td>jdk 1.4</td>
+<td>改良 xml 文件、初步支持注解式配置</td>
+</tr>
+<tr>
+<td>SpringFramework 3.x</td>
+<td>Java 5</td>
+<td>注解式配置、JavaConfig 编程式配置、Environment 抽象</td>
+</tr>
+<tr>
+<td>SpringFramework 4.x</td>
+<td>Java 6</td>
+<td>SpringBoot 1.x、核心容器增强、条件装配、WebMVC 基于 Servlet3.0</td>
+</tr>
+<tr>
+<td>SpringFramework 5.x</td>
+<td>Java 8</td>
+<td>SpringBoot 2.x、响应式编程、SpringWebFlux、支持 Kotlin</td>
+</tr>
+</tbody></table>
+<h3 id="Spring-框架结构"><a href="#Spring-框架结构" class="headerlink" title="Spring 框架结构"></a>Spring 框架结构</h3><blockquote>
+<p>Spring 框架中包含了哪些模块？</p>
+</blockquote>
+<p>Spring Framework 5.x 结构图如下：</p>
+<img   class="lazyload" data-original="/2023/07/09/Spring/image-20221223022005181.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  style="zoom: 67%;"><span class="image-caption">image-20221223022005181</span>
+
+<p><em>在Spring5.x 版本中，Web 模块的 Portlet 组件已经被废弃掉，同时增加了用于异步响应式处理的 WebFlux 组件。</em></p>
+<p>上图中包含了 Spring 框架的所有模块，这些模块可以满足一切企业级应用开发的需求，在开发过程中可以根据需求有选择性地使用所需要的模块。下面分别对这些模块的作用进行简单介绍：</p>
+<p><strong>Core Container 核心容器</strong></p>
+<p>Spring 框架的核心模块，Spring 其他所有的功能基本都需要依赖于该模块，我们从上面那张 Spring 各个模块的依赖关系图就可以看出来。没有这些核心组件，也不可能有 AOP、Web 等上层的功能。对应的源码模块如下：</p>
+<ul>
+<li><code>spring-beans</code>：提供了框架的基础部分，包括控制反转和依赖注入。</li>
+<li><code>spring-core</code>：封装了Spring框架的基本核心工具类。</li>
+<li><code>spring-context</code>：集成了beans功能并添加资源绑定、数据验证、国际化、容器生命周期、事件传播等功能。</li>
+<li><code>spring-expression</code>：提供了强大的表达式语言支持，支持访问和修改属性值，方法调用，支持访问及修改数组、容器和索引器，命名变量，支持算数和逻辑运算，支持从 Spring 容器获取 Bean，它也支持列表投影、选择和一般的列表聚合等。</li>
+</ul>
+<p><strong>中间层模块</strong></p>
+<ul>
+<li><code>spring-aop</code>：提供了面向切面编程实现，提供比如日志记录、权限控制、性能统计等通用功能和业务逻辑分离的技术，并且能动态的把这些功能添加到需要的代码中，这样各司其职，降低业务逻辑和通用功能的耦合。</li>
+<li><code>spring-aspects</code>：提供与 AspectJ 的集成，是一个功能强大且成熟的面向切面编程（AOP）框架。</li>
+<li><code>spring-instrument</code>：提供了类工具的支持和类加载器的实现，可以在特定的应用服务器中使用。</li>
+<li><code>spring-messaging</code>：Spring 4.0 以后新增了消息（Spring-messaging）模块，该模块提供了对消息传递体系结构和协议的支持。</li>
+<li><code>spring-jcl</code>： Spring 5.x中新增了日志框架集成的模块。</li>
+</ul>
+<p><strong>数据访问/集成模块</strong></p>
+<ul>
+<li><code>spring-jdbc</code>：提供了一个 JDBC 的样例模板，使用这些模板能消除传统冗长的 JDBC 编码还有必须的事务控制，而且能享受到 Spring 管理事务的好处。</li>
+<li><code>spring-orm</code>：提供与流行的“对象-关系”映射框架无缝集成的 API，包括 JPA、JDO、Hibernate 和 MyBatis 等。而且还可以使用 Spring 事务管理，无需额外控制事务。</li>
+<li><code>spring-oxm</code>：提供了一个支持 Object /XML 映射的抽象层实现，如 JAXB、Castor、XMLBeans、JiBX 和 XStream。将 Java 对象映射成 XML 数据，或者将XML 数据映射成 Java 对象。</li>
+<li><code>spring-jms</code>: 指 Java 消息服务，提供一套 “消息生产者、消息消费者”模板用于更加简单的使用 JMS，JMS 用于用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。</li>
+<li><code>spring-tx</code>：支持编程和声明式事务管理。</li>
+</ul>
+<p><strong>Web模块</strong></p>
+<ul>
+<li><code>spring-web</code>：提供了基本的 Web 开发集成特性，例如多文件上传功能、使用的 Servlet 监听器的 IOC 容器初始化以及 Web 应用上下文。</li>
+<li><code>spring-webmvc</code>：提供了一个 Spring MVC Web 框架实现。Spring MVC 框架提供了基于注解的请求资源注入、更简单的数据绑定、数据验证等及一套非常易用的 JSP 标签，完全无缝与 Spring 其他技术协作。</li>
+<li><code>spring-websocket</code>：提供了简单的接口，用户只要实现响应的接口就可以快速的搭建 WebSocket Server，从而实现双向通讯。</li>
+<li><code>spring-webflux</code>: Spring WebFlux 是 Spring Framework 5.x中引入的新的响应式web框架。与Spring MVC不同，它不需要Servlet API，是完全异步且非阻塞的，并且通过Reactor项目实现了Reactive Streams规范。Spring WebFlux 用于创建基于事件循环执行模型的完全异步且非阻塞的应用程序。</li>
+</ul>
+<p><strong>Test模块</strong></p>
+<ul>
+<li><code>spring-test</code>：Spring 团队提倡测试驱动开发（TDD）。有了控制反转 (IoC)的帮助，单元测试和集成测试变得更简单。Spring的测试模块对 JUnit（单元测试框架）、TestNG、Mockito（主要用来 Mock 对象）、PowerMock（解决 Mockito 的问题比如无法模拟 final, static，private 方法）等等常用的测试框架支持的都比较好。</li>
+</ul>
+<h3 id="解惑"><a href="#解惑" class="headerlink" title="解惑"></a>解惑</h3><blockquote>
+<p>Spring、Spring MVC、Spring Boot 之间什么关系？</p>
+</blockquote>
+<p>很多人对 Spring,Spring MVC,Spring Boot 这三者傻傻分不清楚！这里简单介绍一下这三者，其实很简单，没有什么高深的东西。</p>
+<p><strong>Spring</strong></p>
+<p>Spring 包含了多个功能模块，其中最重要的是 Spring-Core（主要提供 IoC 依赖注入功能的支持） 模块， Spring 中的其他模块（比如 Spring MVC）的功能实现基本都需要依赖于该模块。</p>
+<p><strong>Spring MVC</strong></p>
+<p>Spring MVC 是 Spring 中的一个很重要的模块，主要赋予 Spring 快速构建 MVC 架构的 Web 程序的能力。MVC 是模型(Model)、视图(View)、控制器(Controller)的简写，其核心思想是通过将业务逻辑、数据、显示分离来组织代码。</p>
+<p><strong>Spring Boot</strong></p>
+<p>使用 Spring 进行开发各种配置过于麻烦比如开启某些 Spring 特性时，需要用 XML 或 Java 进行显式配置。于是，Spring Boot 诞生了！Spring 旨在简化 J2EE 企业应用程序开发。Spring Boot 旨在简化 Spring 开发（减少配置文件，开箱即用！）。</p>
+<p>Spring Boot 只是简化了配置，如果你需要构建 MVC 架构的 Web 程序，你还是需要使用 Spring MVC 作为 MVC 框架，只是说 Spring Boot 帮你简化了 Spring MVC 的很多配置，真正做到开箱即用！</p>
+<h2 id="IoC-由来"><a href="#IoC-由来" class="headerlink" title="IoC 由来"></a>IoC 由来</h2><p>在开始学习 Spring框架的核心功能IoC之前，咱先看以下一个场景，来看看IoC技术是如何从Servlet时代衍生而来的。</p>
+<h3 id="Servlet时代的三层架构"><a href="#Servlet时代的三层架构" class="headerlink" title="Servlet时代的三层架构"></a>Servlet时代的三层架构</h3><p>这个场景对应的三层架构中的组件以及依赖是这样的：</p>
+<img   class="lazyload" data-original="/2023/07/09/Spring/bd19682e7682438fb4ddd1460342ac23tplv-k3u1fbpfcp-zoom-in-crop-mark3024000.webp" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  style="zoom:50%;"><span class="image-caption">img</span>
+
+<h4 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h4><p>简单定义一个<code>DemoDao</code>结构，其中声明了一个<code>findAll</code>方法模拟从数据库查询一组数据：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DemoDao</span> </span>&#123;<br>    <span class="hljs-function">List&lt;String&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>编写它对应的实现类 <code>DemoDaoImpl</code> ，由于没有引入数据库的相关驱动，故这里只是用写死的临时数据模拟 Dao 与数据库的交互：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDaoImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DemoDao</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// 此处应该是访问数据库的操作，用临时数据代替</span><br>        <span class="hljs-keyword">return</span> Arrays.asList(<span class="hljs-string">&quot;aaa&quot;</span>, <span class="hljs-string">&quot;bbb&quot;</span>, <span class="hljs-string">&quot;ccc&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="Service层"><a href="#Service层" class="headerlink" title="Service层"></a>Service层</h4><p>编写一个 <code>DemoService</code> 接口，并声明 <code>findAll</code> 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">DemoService</span> </span>&#123;<br>    <span class="hljs-function">List&lt;String&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>编写它对应的实现类 <code>DemoServiceImpl</code> ，并在内部依赖 <code>DemoDao</code> 接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DemoService</span> </span>&#123;<br>    <br>    <span class="hljs-keyword">private</span> DemoDao demoDao = <span class="hljs-keyword">new</span> DemoDaoImpl();<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> demoDao.findAll();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="Controller层"><a href="#Controller层" class="headerlink" title="Controller层"></a>Controller层</h4><p>编写<code>DemoServlet1</code>类，并在内部依赖 <code>DemoService</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@WebServlet(urlPatterns = &quot;/demo1&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoServlet1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <br>    DemoService demoService = <span class="hljs-keyword">new</span> DemoServiceImpl();<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        resp.getWriter().println(demoService.findAll().toString());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上部分是咱在 JavaWeb 基础中最熟悉不过的三层架构了，好了到这里咱停下来，咱们引入几个问题。</p>
+<h3 id="问题1-需求变更"><a href="#问题1-需求变更" class="headerlink" title="问题1-需求变更"></a>问题1-需求变更</h3><p>场景：现在你的手头上已经基本上开发完成了，数据库用的 MySQL 很舒服，临近交付项目，客户要求把数据库换成Oracle。</p>
+<p>我们知道，MySQL 跟 Oracle ，在有一些<strong>特定的 SQL 上是不一样的</strong>（比如分页），这样我还不能只把数据库连接池的相关配置改了就好使，每个 DaoImpl 也得改啊！于是乎，你开始修改起工程里所有的 <code>DaoImpl</code> ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoDaoImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DemoDao</span> </span>&#123;<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// 模拟修改SQL的动作</span><br>        <span class="hljs-keyword">return</span> Arrays.asList(<span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>, <span class="hljs-string">&quot;oracle&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>经历了一波波折改好了之后，这时客户又打电话要求换回原先的MySQL。改来改去不是个事啊，怎么解决这个问题呢？</p>
+<h4 id="引入静态工厂"><a href="#引入静态工厂" class="headerlink" title="引入静态工厂"></a>引入静态工厂</h4><p>苦思良久，你终于想到了一个好办法：如果我<strong>事先把这些 Dao 都写好</strong>了，之后<strong>用一个静态工厂来创建特定类型的实现类</strong>，这样万一发生需求变更，是不是就可以做到只改一次代码就可以了！</p>
+<p>声明一个静态工厂，起个比较别致的名字吧：<code>BeanFactory</code> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanFactory</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DemoDao <span class="hljs-title">getDemoDao</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// return new DemoDaoImpl();</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoOracleDao();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这时候就可以修改先前的Service实现类，其中引用的 Dao 不再是手动 new ，而是由 <code>BeanFactory</code> 的静态方法返回而得：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DemoService</span> </span>&#123;<br>    <br>    DemoDao demoDao = BeanFactory.getDemoDao();<br>    <br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> demoDao.findAll();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如此这般，即便 ServiceImpl 再多，Dao 再多，<strong>发生需求更改</strong>，我也<strong>只需要改动 BeanFactory 中的静态方法返回值即可</strong>！</p>
+<h3 id="问题2-源码丢失"><a href="#问题2-源码丢失" class="headerlink" title="问题2-源码丢失"></a>问题2-源码丢失</h3><p>场景：线上运行了一段时间后，客户要求对系统中一些功能提出优化和扩展需求，但这个时候当你打开项目源码想运行的时候，发现连编译都无法通过。再仔细查找，你发现<code>DemoDaoImpl</code>的源文件丢失了！导致代码根本无法编译。以下是编译错误的位置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanFactory</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DemoDao <span class="hljs-title">getDemoDao</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DemoDaoImpl(); <span class="hljs-comment">// DemoDaoImpl.java不存在导致编译失败</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当前的代码中，因为源码中真的缺少这个 <code>DemoDaoImpl</code> 类，导致编译都无法通过，这种现象就可以描述为 <code>BeanFactory</code> 强依赖于 <code>DemoDaoImpl</code> ，也就是咱可能听过也可能常说的“<strong>紧耦合</strong>”。</p>
+<h4 id="解决紧耦合"><a href="#解决紧耦合" class="headerlink" title="解决紧耦合"></a>解决紧耦合</h4><p>这时候源文件丢失的情况下，你又想快点运行项目，这怎么办？想一下在现有知识中，有没有一种办法能解决这个编译都没办法编译的问题？</p>
+<p><strong>反射！反射可以声明一个类的全限定名，来获取它的字节码描述，这样也能构造对象！</strong></p>
+<p>于是 <code>BeanFactory</code> 可以改造为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanFactory</span> </span>&#123;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DemoDao <span class="hljs-title">getDemoDao</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">return</span> (DemoDao) Class.forName(<span class="hljs-string">&quot;com.linkedbear.architecture.c_reflect.dao.impl.DemoDaoImpl&quot;</span>).newInstance();<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;DemoDao instantiation error, cause: &quot;</span> + e.getMessage());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用反射之后，错误现象不再是在编译器就出现，而是在工程启动后，由于 <code>BeanFactory</code> 要构造 <code>DemoDaoImpl</code> 时确实还没有该类，所以抛出 <code>ClassNotFoundException</code> 异常。这样 <code>BeanFactory</code> 对 <code>DemoDaoImpl</code> 的依赖程度就相当于<strong>降低</strong>了，也就可以算作“<strong>弱依赖</strong>”了。</p>
+<h3 id="问题3-硬编码"><a href="#问题3-硬编码" class="headerlink" title="问题3-硬编码"></a>问题3-硬编码</h3><p>场景：躲得了初一躲不了十五，这个问题最终还是得解决，你费劲八道的终于把 <code>DemoDaoImpl.java</code> 找了回来，这下终于运行期也不报错了。但这样在切换 MySQL 和 Oracle 库时还是会出现一个问题：由于类的全限定名是写死在 <code>BeanFactory</code> 的源码中，导致每次切换数据库后还得重新编译工程才可以正常运行，这显得貌似很没必要，应该有更好的处理方案。</p>
+<h4 id="外部化配置"><a href="#外部化配置" class="headerlink" title="外部化配置"></a>外部化配置</h4><p>机智的你利用现有的 JavaSE 知识，立马能想到：哎，我可以<strong>借助 IO 来实现文件存储配置</strong>啊！这样每次 <code>BeanFactory</code> 被初始化时，让它去读配置文件，这样就不会出现硬编码的现象了！</p>
+<p>于是创建一个<code>factory.properties</code>配置文件，并在其中声明如下内容：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">demoService</span>=<span class="hljs-string">com.linkedbear.architecture.d_properties.service.impl.DemoServiceImpl</span><br><span class="hljs-attr">demoDao</span>=<span class="hljs-string">com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl</span><br></code></pre></td></tr></table></figure>
+
+<p>这样<code>BeanFactory</code>就可以根据别名来匹配对应的Dao全限定类名了。首先可以在 <code>BeanFactory</code> 中加入一个静态变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanFactory</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Properties properties;<br></code></pre></td></tr></table></figure>
+
+<p>然后使用静态代码块初始化properties：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Properties properties;<br>   <br>   <span class="hljs-comment">// 加载factord.properties文件</span><br>   <span class="hljs-keyword">static</span> &#123;<br>       properties = <span class="hljs-keyword">new</span> Properties();<br>       <span class="hljs-keyword">try</span> &#123;<br>           <span class="hljs-comment">// 必须使用类加载器读取resource文件夹下的配置文件</span><br>           properties.load(BeanFactory.class.getClassLoader().getResourceAsStream(<span class="hljs-string">&quot;factory.properties&quot;</span>));<br>       &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>           <span class="hljs-comment">// BeanFactory类的静态初始化都失败了，那后续也没有必要继续执行了</span><br>           <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ExceptionInInitializerError(<span class="hljs-string">&quot;BeanFactory initialize error, cause: &quot;</span> + e.getMessage());<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>配置文件读取到之后，下面的 <code>getDemoDao</code> 方法也可以进一步改了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DemoDao <span class="hljs-title">getDemoDao</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            Class&lt;?&gt; beanClazz = Class.forName(properties.getProperty(<span class="hljs-string">&quot;demoDao&quot;</span>));<br>            <span class="hljs-keyword">return</span> beanClazz.newInstance();<br>        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;BeanFactory have not [&quot;</span> + beanName + <span class="hljs-string">&quot;] bean!&quot;</span>, e);<br>        &#125; <span class="hljs-keyword">catch</span> (IllegalAccessException | InstantiationException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;[&quot;</span> + beanName + <span class="hljs-string">&quot;] instantiation error!&quot;</span>, e);<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>写到这里，是不是感觉怪怪的。。。都抽象化到这种地步了，还有必要在这里面写死 “demoDao” 吗？肯定没必要了吧，干脆做一个通用得了，你传什么别名，<code>BeanFactory</code> 就从配置文件中找对应的全限定类名，反射构造对象返回：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title">getBean</span><span class="hljs-params">(String beanName)</span> </span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">// 从properties文件中读取指定name对应类的全限定名，并反射实例化</span><br>            Class&lt;?&gt; beanClazz = Class.forName(properties.getProperty(beanName));<br>            <span class="hljs-keyword">return</span> beanClazz.newInstance();<br>        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;BeanFactory have not [&quot;</span> + beanName + <span class="hljs-string">&quot;] bean!&quot;</span>, e);<br>        &#125; <span class="hljs-keyword">catch</span> (IllegalAccessException | InstantiationException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;[&quot;</span> + beanName + <span class="hljs-string">&quot;] instantiation error!&quot;</span>, e);<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>最后，在DemoServiceImpl里就可以转用getBean方法，并指定需要获取的指定名称的类的对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DemoService</span> </span>&#123;<br>    DemoDao demoDao = (DemoDao) BeanFactory.getBean(<span class="hljs-string">&quot;demoDao&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>到这里，你突然发现一个现象：这下你可以把<strong>所有</strong>想抽取出来的<strong>组件都可以做成外部化配置</strong>了！</p>
+<p>对于这种可能会变化的配置、属性等，通常不会直接硬编码在源代码中，而是抽取为一些配置文件的形式（ properties 、xml 、json 、yml 等），配合程序对配置文件的加载和解析，从而达到动态配置、降低配置耦合的目的。</p>
+<h3 id="问题4-多重构建"><a href="#问题4-多重构建" class="headerlink" title="问题4-多重构建"></a>问题4-多重构建</h3><p>改到这里可能你会感觉，是不是哪里不对劲，是不是还有改进的空间呢？这样，咱在 <code>ServiceImpl</code> 的构造方法中连续多次获取 <code>DemoDaoImpl</code> ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DemoServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">DemoService</span> </span>&#123;<br>    <br>    DemoDao demoDao = (DemoDao) BeanFactory.getBean(<span class="hljs-string">&quot;demoDao&quot;</span>);<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DemoServiceImpl</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(BeanFactory.getBean(<span class="hljs-string">&quot;demoDao&quot;</span>));<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>咱只来看打印的这些 <code>DemoDao</code> 的内存地址：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@<span class="hljs-number">44548059</span><br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@5cab632f<br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@<span class="hljs-number">24943e59</span><br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@3f66e016<br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@5f50e9eb<br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@58e55b35<br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@5d06d086<br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@55e8ed60<br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl<span class="hljs-meta">@daf5987</span><br>com.linkedbear.architecture.d_properties.dao.impl.DemoDaoImpl@7f6187f4<br></code></pre></td></tr></table></figure>
+
+<p>可以发现每次打印的内存地址都不相同，证明是创建了10个不同的 <code>DemoDaoImpl</code> ！但是，真的有必要吗。。。</p>
+<h4 id="引入缓存"><a href="#引入缓存" class="headerlink" title="引入缓存"></a>引入缓存</h4><p>如果对于这些没必要创建多个对象的组件，如果能有一种机制保证整个工程运行过程中只存在一个对象，那就可以大大减少资源消耗。于是可以在 <code>BeanFactory</code> 中加入一个缓存区：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BeanFactory</span> </span>&#123;<br>    <span class="hljs-comment">// 缓存区，保存已经创建好的对象</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;String, Object&gt; beanMap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>    <br>    <span class="hljs-comment">// ......</span><br></code></pre></td></tr></table></figure>
+
+<p>之后在 <code>getBean</code> 方法中，为了控制线程并发，需要引入<strong>双检锁</strong>保证对象只有一个：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title">getBean</span><span class="hljs-params">(String beanName)</span> </span>&#123;<br>    <span class="hljs-comment">// 双检锁保证beanMap中确实没有beanName对应的对象</span><br>    <span class="hljs-keyword">if</span> (!beanMap.containsKey(beanName)) &#123;<br>        <span class="hljs-keyword">synchronized</span> (BeanFactory.class) &#123;<br>            <span class="hljs-keyword">if</span> (!beanMap.containsKey(beanName)) &#123;<br>                <span class="hljs-comment">// 过了双检锁，证明确实没有，可以执行反射创建</span><br>                <span class="hljs-keyword">try</span> &#123;<br>                    Class&lt;?&gt; beanClazz = Class.forName(properties.getProperty(beanName));<br>                    Object bean = beanClazz.newInstance();<br>                    <span class="hljs-comment">// 反射创建后放入缓存再返回</span><br>                    beanMap.put(beanName, bean);<br>                &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;BeanFactory have not [&quot;</span> + beanName + <span class="hljs-string">&quot;] bean!&quot;</span>, e);<br>                &#125; <span class="hljs-keyword">catch</span> (IllegalAccessException | InstantiationException e) &#123;<br>                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;[&quot;</span> + beanName + <span class="hljs-string">&quot;] instantiation error!&quot;</span>, e);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> beanMap.get(beanName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>改良完成，重新测试，观察这一次打印的结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">com.linkedbear.architecture.e_cachedfactory.dao.impl.DemoDaoImpl@4a667700<br>com.linkedbear.architecture.e_cachedfactory.dao.impl.DemoDaoImpl@4a667700<br>com.linkedbear.architecture.e_cachedfactory.dao.impl.DemoDaoImpl@4a667700<br>......<br></code></pre></td></tr></table></figure>
+
+<p>果然只会有一个对象了，最终目的达到。</p>
+<h3 id="IOC的思想引入"><a href="#IOC的思想引入" class="headerlink" title="IOC的思想引入"></a>IOC的思想引入</h3><p>到这里，整个场景的演绎就算结束了，下面咱来总结一下这里面出现的几个关键点。</p>
+<ul>
+<li>静态工厂可将多处依赖抽取分离</li>
+<li>外部化配置文件+反射可解决配置的硬编码问题</li>
+<li>缓存可控制对象实例数</li>
+</ul>
+<p>接下来，是时候引出这一章的主题了。</p>
+<p>首先，对比以上的两种代码写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> DemoDao dao = <span class="hljs-keyword">new</span> DemoDaoImpl();<br><span class="hljs-keyword">private</span> DemoDao dao = (DemoDao) BeanFactory.getBean(<span class="hljs-string">&quot;demoDao&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>上面的是强依赖 / 紧耦合，在编译期就必须保证 <code>DemoDaoImpl</code> 存在；下面的是弱依赖 / 松散耦合，只有到运行期反射创建时才知道 <code>DemoDaoImpl</code> 是否存在。</p>
+<p>再对比看，上面的写法是主动声明了 <code>DemoDao</code> 的实现类，只要编译通过，运行一定没错；而下面的写法没有指定实现类，而是由 <code>BeanFactory</code> 去帮咱查找一个 name 为 <code>demoDao</code> 的对象，倘若 <code>factory.properties</code> 中声明的全限定类名出现错误，则会出现强转失败的异常 <code>ClassCastException</code> 。</p>
+<p>仔细体会下面这种对象获取的方式，本来咱开发者可以使用上面的方式，主动声明实现类，但如果选择下面的方式，那就不再是咱自己去声明，而是将获取对象的方式交给了 <code>BeanFactory</code> 。这种<strong>将控制权交给别人</strong>的思想，就可以称作：<strong>控制反转（Inverse of Control , IOC）</strong>。而 <code>BeanFactory</code> 根据指定的 <code>beanName</code> 去获取和创建对象的过程，就可以称作：<strong>依赖查找（Dependency Lookup , DL ）</strong>。</p>
+<p>终于了解什么是 IOC ，以及它的实现方式之一：<strong>依赖查找</strong>。下面咱就可以真正的快速入门 SpringFramework 了</p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>Jacckx</li>
+    <li><strong>本文链接：</strong><a href="http://jacckx.me/2023/07/09/Spring/index.html" title="http:&#x2F;&#x2F;jacckx.me&#x2F;2023&#x2F;07&#x2F;09&#x2F;Spring&#x2F;index.html">http:&#x2F;&#x2F;jacckx.me&#x2F;2023&#x2F;07&#x2F;09&#x2F;Spring&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/theme/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a href="/2023/07/09/PWN/"><i class="iconfont iconleft"></i>PWN</a>
+    <a href="/2023/07/09/JVM/">JVM<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring"><span class="toc-text">Spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E5%85%A5%E9%97%A8"><span class="toc-text">Spring 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-%E6%A6%82%E8%BF%B0"><span class="toc-text">Spring 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-text">Spring 发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84"><span class="toc-text">Spring 框架结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%83%91"><span class="toc-text">解惑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IoC-%E7%94%B1%E6%9D%A5"><span class="toc-text">IoC 由来</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet%E6%97%B6%E4%BB%A3%E7%9A%84%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-text">Servlet时代的三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%981-%E9%9C%80%E6%B1%82%E5%8F%98%E6%9B%B4"><span class="toc-text">问题1-需求变更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%982-%E6%BA%90%E7%A0%81%E4%B8%A2%E5%A4%B1"><span class="toc-text">问题2-源码丢失</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%983-%E7%A1%AC%E7%BC%96%E7%A0%81"><span class="toc-text">问题3-硬编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%984-%E5%A4%9A%E9%87%8D%E6%9E%84%E5%BB%BA"><span class="toc-text">问题4-多重构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOC%E7%9A%84%E6%80%9D%E6%83%B3%E5%BC%95%E5%85%A5"><span class="toc-text">IOC的思想引入</span></a></li></ol></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=987886543 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/jacckx.c/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/Jacckx "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:jacckx@outlook.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+    <div class="scrollbar j-scrollbar">
+  <div class="scrollbar-current j-scrollbar-current"></div>
+</div>
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
